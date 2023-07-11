@@ -11,8 +11,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Fruits_market')
 
-sales= SHEET.worksheet('sold')
-
-data = sales.get_all_values()
-
-print(data)
+market_name = input("Hello! This is a Fruit market store data collector. Please choose a name for the market you'd like to run: ")
+user_age= int(input("And now please input your age: "))
+if user_age < 18:
+    raise SystemExit('The user must be at least 18')
