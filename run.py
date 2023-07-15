@@ -20,18 +20,21 @@ if user_age < 18:
 
 
 def get_sold_data():
+    """
+    This function is to show what name the user has picked for the market and the business day date as well as to input the value sold by the end of the day.
+    """
+    today = datetime.now().date()
 
-        today = datetime.now().date()
+    print("Welcome to " + market_name.capitalize() + "'s sales data collector.")
+    print("Please enter how many products were sold on the date of " + str(today))
+    print("Data provided are to be 8 values for different fruits kind, separated by commas.")
+    print("Data provided represents these products in this order: [Strawberry ,Apple ,Banana ,Mango ,Avocado ,Orange ,Kiwi ,Lemon] and the maximum amount of products per item we can sell each day is 30. ")
+    print("Data shold be as this Example: 11,11,11,11,11,11,11,11\n")
 
-        print("Welcome to " + market_name.capitalize() + "'s sales data collector.")
-        print("Please enter how many products were sold on the date of " + str(today))
-        print("Data provided are to be 8 values for different fruits kind, separated by commas.")
-        print("Data provided represents these products in this order: [Strawberry ,Apple ,Banana ,Mango ,Avocado ,Orange ,Kiwi ,Lemon] and the maximum amount of products per item we can sell each day is 30. ")
-        print("Data shold be as this Example: 11,11,11,11,11,11,11,11\n")
+    data_str = input("Enter your data values here: \n")
+    sold_data = data_str.split(",")
 
-        data_str = input("Enter your data values here: \n")
-        print(f"The data provided is {data_str}")
 
-get_sold_data()
+
 
 
