@@ -34,6 +34,10 @@ def get_sold_data():
     data_str = input("Enter your data values here: \n")
     sold_data = data_str.split(",")
 
+    if validate_data(sold_data):
+        print("Data is valid!")
+        break
+sold_data = [int(value) for value in sold_data]
 
 
 
