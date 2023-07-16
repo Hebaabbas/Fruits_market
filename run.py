@@ -39,7 +39,6 @@ def get_sold_data():
             print("Data is valid!")
             break
 
-    sold_data = [int(value) for value in sold_data]
     return sold_data
 
 
@@ -59,8 +58,18 @@ def validate_data(values):
         return False
 
     return True
+
+def update_sold_worksheet(data, worksheet):
+    print(f"Updating {worksheet} worksheet...\n")
+    sold_worksheet = SHEET.worksheet(worksheet)
+    sold_worksheet.append_row(data)
+    print("Worksheet is successfully updated.\n")
+
     
-get_sold_data()
+data = get_sold_data()
+sold_data = [int(num) for num in data]
+update_sold_worksheet(sold_data, "sold")
+
 
 
 
