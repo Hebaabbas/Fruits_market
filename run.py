@@ -1,6 +1,8 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from datetime import datetime
+from pprint import pprint
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -20,11 +22,11 @@ if user_age < 18:
 
 def store_ready():
     """
-    This function is to ask the user if the business day is over and incase it is yes then it would either direct to start inserting the values, 
-    if not the system will inform the user to come back later
-    """       
+    This function is to ask the user if the business day is over and in case it is yes then it would either direct to start inserting the values,
+    if not, the system will inform the user to come back later
+    """
     while True:
-        store_condition = input("Is the business day over now and you are ready to register what was sold for today? please insert yes or no: ")
+        store_condition = input("Is the business day over now and are you ready to register what was sold for today? Please insert yes or no: ")
         if store_condition.lower() == "yes":
             print("Great! Now you can input the amount you have sold.")
             return True
@@ -41,7 +43,7 @@ def get_sold_data():
     """
     today = datetime.now().date()
 
-    print("Welcome to " + market_name.capitalize() + "'s sales data collector.")
+    print("Welcome to " + store_name.capitalize() + "'s sales data collector.")
     print("Please enter how many products were sold on the date of " + str(today))
     print("Data provided are to be 8 values for different fruits kind, separated by commas.")
     print("Data provided represents these products in this order: [Strawberry, Apple, Banana, Mango, Avocado, Orange, Kiwi, Lemon] and the maximum amount of products per item we can sell each day is 30.")
@@ -77,23 +79,34 @@ def validate_data(values):
 
 def update_sold_worksheet(data, worksheet):
     """
-    This function is to update sold worksheet, and new row with the list data provided
+    This function is to update sold worksheet, and a new row with the list data provided
     """
     print(f"Updating {worksheet} worksheet...\n")
     sold_worksheet = SHEET.worksheet(worksheet)
     sold_worksheet.append_row(data)
     print("Worksheet is successfully updated.\n")
 
+def calculate_extra_data(sold_row):
+    """
+    This function is to compare the sold with the stock and calculate the extra for each type of fruit.
+    Positive surplus indicates waste
+    Negative surplus indicates the refill that was brought when stock was sold out.
+    """
+    print("Calculating our surplus and deficit data...\n")
+    stock = SHEET.worksheet("stock").get_all_values()
+    stock_row = stock[-1]
+    print(stock_row)
+
 def main():
     """
     Run all program functions
-    """  
-    store = store_ready()
+    """
     data = get_sold_data()
     sold_data = [int(num) for num in data]
     update_sold_worksheet(sold_data, "sold")
 
 main()
+
 
 
 
