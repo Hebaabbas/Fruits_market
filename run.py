@@ -19,6 +19,7 @@ if user_age < 18:
     raise SystemExit('The user must be at least 18')
 
 
+
 def get_sold_data():
     """
     This function is to show what name the user has picked for the market and the business day date as well as to input the value sold by the end of the day.
@@ -68,10 +69,15 @@ def update_sold_worksheet(data, worksheet):
     sold_worksheet.append_row(data)
     print("Worksheet is successfully updated.\n")
 
-    
-data = get_sold_data()
-sold_data = [int(num) for num in data]
-update_sold_worksheet(sold_data, "sold")
+def main():
+    """
+    Run all program functions
+    """   
+    data = get_sold_data()
+    sold_data = [int(num) for num in data]
+    update_sold_worksheet(sold_data, "sold")
+
+main()
 
 
 
