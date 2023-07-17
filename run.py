@@ -97,6 +97,14 @@ def calculate_extra_data(sold_row):
     stock_row = stock[-1]
     print(stock_row)
 
+
+    extra_data = []
+    for stock, sold in zip(stock_row, sold_row):
+        extra = int(stock) - sold
+        extra_data.append(extra)
+
+    return extra_data
+
 def main():
     """
     Run all program functions
@@ -104,6 +112,8 @@ def main():
     data = get_sold_data()
     sold_data = [int(num) for num in data]
     update_sold_worksheet(sold_data, "sold")
+    new_extra_data = calculate_extra_data(sold_data)
+    print(new_extra_data)
 
 main()
 
