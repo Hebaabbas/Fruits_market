@@ -60,6 +60,9 @@ def validate_data(values):
     return True
 
 def update_sold_worksheet(data, worksheet):
+    """
+    This function is to update sold worksheet, and new row with the list data provided
+    """
     print(f"Updating {worksheet} worksheet...\n")
     sold_worksheet = SHEET.worksheet(worksheet)
     sold_worksheet.append_row(data)
