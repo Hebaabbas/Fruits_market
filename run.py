@@ -13,12 +13,27 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Fruits_market')
 
-market_name = input("Hello! This is a Fruit market store data collector. Please choose a name for the market you'd like to run: ")
+store_name = input("Hello! This is a Fruit market store data collector. Please choose a name for the market you'd like to run: ")
 user_age = int(input("And now please input your age: "))
 if user_age < 18:
     raise SystemExit('The user must be at least 18')
 
-
+def store_ready():
+    """
+    This function is to ask the user if the business day is over and incase it is yes then it would either direct to start inserting the values, 
+    if not the system will inform the user to come back later
+    """       
+    while True:
+        store_condition = input("Is the business day over now and you are ready to register what was sold for today? please insert yes or no: ")
+        if store_condition.lower() == "yes":
+            print("Great! Now you can input the amount you have sold.")
+            return True
+        elif store_condition.lower() == "no":
+            print("Please come back when the business day is over.")
+            return False
+        else:
+            print("You did not insert a valid option, please give it another try")
+            continue
 
 def get_sold_data():
     """
@@ -72,7 +87,8 @@ def update_sold_worksheet(data, worksheet):
 def main():
     """
     Run all program functions
-    """   
+    """  
+    store = store_ready()
     data = get_sold_data()
     sold_data = [int(num) for num in data]
     update_sold_worksheet(sold_data, "sold")
