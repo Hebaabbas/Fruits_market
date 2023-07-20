@@ -79,18 +79,28 @@ def validate_data(values):
 
 def update_sold_worksheet(data, worksheet):
     """
-    This function is to update sold worksheet, and a new row with the list data provided
+    This function is to update sold worksheet, 
+    which adds a new row with the list of data indicating the value of each type of product still available in our store or how many that was needed to be gotten from the orchard to refill.
     """
     print(f"Updating {worksheet} worksheet...\n")
     sold_worksheet = SHEET.worksheet(worksheet)
     sold_worksheet.append_row(data)
     print("Worksheet is successfully updated.\n")
 
+def update_extra_worksheet(data, worksheet):
+    """
+    This function is to update extra worksheet, and a new row with the list data provided
+    """
+    print(f"Updating {worksheet} worksheet...\n")
+    extra_worksheet = SHEET.worksheet(worksheet)
+    extra_worksheet.append_row(data)
+    print("Worksheet is successfully updated.\n")
+
 def calculate_extra_data(sold_row):
     """
     This function is to compare the sold with the stock and calculate the extra for each type of fruit.
-    Positive surplus indicates waste
-    Negative surplus indicates the refill that was brought when stock was sold out.
+    Positive surplus indicates waste/extra that was not sold and still in our store.
+    Negative surplus indicates the refill that was brought from our orchard when stock was sold out.
     """
     print("Calculating our surplus and deficit data...\n")
     stock = SHEET.worksheet("stock").get_all_values()
@@ -113,7 +123,7 @@ def main():
     sold_data = [int(num) for num in data]
     update_sold_worksheet(sold_data, "sold")
     new_extra_data = calculate_extra_data(sold_data)
-    print(new_extra_data)
+    update_extra_worksheet(new_extra_data, "extra")    
 
 main()
 
