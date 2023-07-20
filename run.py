@@ -77,24 +77,18 @@ def validate_data(values):
 
     return True
 
-def update_sold_worksheet(data, worksheet):
-    """
-    This function is to update sold worksheet, 
-    which adds a new row with the list of data indicating the value of each type of product still available in our store or how many that was needed to be gotten from the orchard to refill.
-    """
-    print(f"Updating {worksheet} worksheet...\n")
-    sold_worksheet = SHEET.worksheet(worksheet)
-    sold_worksheet.append_row(data)
-    print("Worksheet is successfully updated.\n")
 
-def update_extra_worksheet(data, worksheet):
+def update_worksheet(data, worksheet):
     """
-    This function is to update extra worksheet, and a new row with the list data provided
+    This function allows the user to insert the data in the worksheet 
+    as well as update the worksheet based on the data provided
     """
     print(f"Updating {worksheet} worksheet...\n")
-    extra_worksheet = SHEET.worksheet(worksheet)
-    extra_worksheet.append_row(data)
-    print("Worksheet is successfully updated.\n")
+    worksheet_to_update = SHEET.worksheet(worksheet)
+    worksheet_to_update.append_row(data)
+    print(f"{worksheet} worksheet is successfully updated.\n")
+
+
 
 def calculate_extra_data(sold_row):
     """
@@ -121,9 +115,9 @@ def main():
     """
     data = get_sold_data()
     sold_data = [int(num) for num in data]
-    update_sold_worksheet(sold_data, "sold")
+    update_worksheet(sold_data, "sold")
     new_extra_data = calculate_extra_data(sold_data)
-    update_extra_worksheet(new_extra_data, "extra")    
+    update_worksheet(new_extra_data, "extra")    
 
 main()
 
