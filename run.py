@@ -147,12 +147,18 @@ def calculate_stock_data(data):
     new_stock_data = []
 
     for column in data:
-        int_column = [int(num) for num in column]
+        int_column = []
+        for num in column:
+            try:
+                int_column.append(int(num))
+            except ValueError:
+                continue
+            
         average = sum(int_column) / len(int_column)
         stock_num = average * 1.05
         new_stock_data.append(round(stock_num))
 
-    print("After calculating the average and of our stock and adding 5% to it, our stock for tomorrows business day is:", new_stock_data)
+    print("After calculating the average and adding 5% to our stock, our stock for tomorrow's business day is:", new_stock_data)
 
     return new_stock_data
 
