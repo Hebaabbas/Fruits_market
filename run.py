@@ -125,6 +125,21 @@ def get_last_3_entries_sold():
 
     return columns
 
+def calculate_stock_data(data):
+    """
+    Calculate the average stock for each fruit type, adding 5% on each value and rounding it
+    """
+    print("Calculating stock data...\n")
+    new_stock_data = []
+
+    for column in data:
+        int_column = [int(num) for num in column]
+        average = sum(int_column) / len(int_column)
+        stock_num = average * 1.05
+        new_stock_data.append(round(stock_num))
+
+    return new_stock_data
+
 def main():
     """
     Run all program functions
@@ -135,6 +150,9 @@ def main():
     new_extra_data = calculate_extra_data(sold_data)
     update_worksheet(new_extra_data, "extra")    
     sold_columns = get_last_3_entries_sold()
+    stock_data= calculate_stock_data(sold_columns)
+    update_worksheet(stock_data, "stock")
+
 
 main()
 
