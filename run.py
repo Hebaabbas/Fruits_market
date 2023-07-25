@@ -70,6 +70,7 @@ def get_sold_data():
     return sold_data
 
 
+
 def validate_data(values):
     """
     This function is to check if there are exactly 8 values in our data
@@ -90,8 +91,7 @@ def validate_data(values):
 
 def update_worksheet(data, worksheet):
     """
-    This function allows the user to insert the data in the worksheet 
-    as well as update the worksheet based on the data provided
+    This function allows the user update the worksheet based on the data provided
     """
     print(f"Updating {worksheet} worksheet...\n")
     worksheet_to_update = SHEET.worksheet(worksheet)
@@ -109,15 +109,20 @@ def calculate_extra_data(sold_row):
     print("Calculating our surplus and deficit data...\n")
     stock = SHEET.worksheet("stock").get_all_values()
     stock_row = stock[-1]
-    print(stock_row)
+    print("Current stock data:", stock_row)
 
 
     extra_data = []
     for stock, sold in zip(stock_row, sold_row):
         extra = int(stock) - sold
         extra_data.append(extra)
+        
+    print("Positive numbers are what the store had surplus from the stock and negative are what the owner had to refill:", extra_data)
 
     return extra_data
+
+
+
 
 def get_last_3_entries_sold():
     """
@@ -147,6 +152,8 @@ def calculate_stock_data(data):
         stock_num = average * 1.05
         new_stock_data.append(round(stock_num))
 
+    print("After calculating the average and of our stock and adding 5% to it, our stock for tomorrows business day is:", new_stock_data)
+
     return new_stock_data
 
 def main():
@@ -164,8 +171,8 @@ def main():
     stock_data= calculate_stock_data(sold_columns)
     update_worksheet(stock_data, "stock")
 
-
 main()
+print("Thank you for using our market program for today, welcome back tomorrow!")
 
 
 
