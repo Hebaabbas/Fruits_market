@@ -113,8 +113,7 @@ def get_last_3_entries_sold():
     """
     Collects the last 3 entries from sold column worksheet which
     shows how many entries were sold during the last 3 business days
-    which helps the owner to know how many should the owner prepare for
-    the new business day by getting the average calculated. 
+    and returns the data as a list of lists. 
     """
     sold = SHEET.worksheet("sold")
 
