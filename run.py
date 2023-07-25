@@ -1,7 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from datetime import datetime
-from pprint import pprint
 
 
 SCOPE = [
@@ -23,12 +22,12 @@ def get_user_info():
     global user_age, store_name
 
     if user_age is None:
-        user_age = int(input("Hello! This is a Fruit market store data collector. Please input your age: "))
+        user_age = int(input("Hello! This is a Fruit market store data collector. Please input your age: \n"))
         if user_age < 18:
             raise SystemExit('The user must be at least 18')
 
     if store_name is None:
-        store_name = input("Please choose a name for the market you'd like to run: ")
+        store_name = input("Please choose a name for the market you'd like to run: \n")
 
 def store_ready():
     """
@@ -36,7 +35,7 @@ def store_ready():
     if not, the system will inform the user to come back later
     """
     while True:
-        store_condition = input("Is the business day over now and are you ready to register what was sold for today? Please insert yes or no: ")
+        store_condition = input("Is the business day over now and are you ready to register what was sold for today? Please insert yes or no: \n")
         if store_condition.lower() == "yes":
             print("Great! Now you can input the amount you have sold.")
             return True
