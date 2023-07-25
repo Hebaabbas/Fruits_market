@@ -15,10 +15,20 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Fruits_market')
 
-store_name = input("Hello! This is a Fruit market store data collector. Please choose a name for the market you'd like to run: ")
-user_age = int(input("And now please input your age: "))
-if user_age < 18:
-    raise SystemExit('The user must be at least 18')
+# Global variables to store user age and store name
+store_name = None
+user_age = None
+
+def get_user_info():
+    global user_age, store_name
+
+    if user_age is None:
+        user_age = int(input("Hello! This is a Fruit market store data collector. Please input your age: "))
+        if user_age < 18:
+            raise SystemExit('The user must be at least 18')
+
+    if store_name is None:
+        store_name = input("Please choose a name for the market you'd like to run: ")
 
 def store_ready():
     """
@@ -143,6 +153,7 @@ def main():
     """
     Run all program functions
     """
+    get_user_info()
     data = get_sold_data()
     sold_data = [int(num) for num in data]
     update_worksheet(sold_data, "sold")
