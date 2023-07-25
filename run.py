@@ -109,6 +109,22 @@ def calculate_extra_data(sold_row):
 
     return extra_data
 
+def get_last_3_entries_sold():
+    """
+    Collects the last 3 entries from sold column worksheet which
+    shows how many entries were sold during the last 3 business days
+    which helps the owner to know how many should the owner prepare for
+    the new business day by getting the average calculated. 
+    """
+    sold = SHEET.worksheet("sold")
+
+    columns = []
+    for ind in range(1, 9):
+        column = sold.col_values(ind)
+        columns.append(column[-3:])
+
+    return columns
+
 def main():
     """
     Run all program functions
@@ -118,9 +134,9 @@ def main():
     update_worksheet(sold_data, "sold")
     new_extra_data = calculate_extra_data(sold_data)
     update_worksheet(new_extra_data, "extra")    
+    sold_columns = get_last_3_entries_sold()
 
 main()
-
 
 
 
