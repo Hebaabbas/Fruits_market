@@ -154,6 +154,7 @@ def main():
     Run all program functions
     """
     get_user_info()
+    store_ready()
     data = get_sold_data()
     sold_data = [int(num) for num in data]
     update_worksheet(sold_data, "sold")
