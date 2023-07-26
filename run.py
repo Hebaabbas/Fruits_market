@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from datetime import datetime
+import json
 
 
 SCOPE = [
@@ -161,6 +162,12 @@ def calculate_stock_data(data):
 
     return new_stock_data
 
+def get_fruit_names():
+    """
+    Get the list of fruit names for the dictionary keys
+    """
+    return ["Strawberry", "Apple", "Banana", "Mango", "Avocado", "Orange", "Kiwi", "Lemon"]
+
 def main():
     """
     Run all program functions
@@ -175,6 +182,9 @@ def main():
     sold_columns = get_last_3_entries_sold()
     stock_data= calculate_stock_data(sold_columns)
     update_worksheet(stock_data, "stock")
+
+    fruit_names = get_fruit_names()
+
 
 main()
 print("Thank you for using our market program for today, welcome back tomorrow!")
