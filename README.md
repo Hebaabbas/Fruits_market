@@ -91,3 +91,12 @@ No bugs or errors found.
 ## Validator Testing
 - PEP8:
 No errors were returned from PEP8online.com
+
+## Deployment:
+This project was deployed using Code institute's mock terminal for Heroku.
+- Steps for Deployment:
+1. Create a new Heroku app
+2. Set the buildbacks to Python anf NodeJS
+3. Link the Heroku app to the repository
+4. Deploy and View.
+
