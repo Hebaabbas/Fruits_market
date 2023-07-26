@@ -79,3 +79,8 @@ Any data updated will be shown on the Google sheets. In our example we have user
 
 3. And last but not least, The stock sheet and thats where the program saves and lets the user know the value that has to be in the stock by the begining of the next business day based of calculating sales averages and adding 5% to the values:
 ![Alt Text](./media/11.png)
+
+## Testing:
+I have manually tested this project by doing the following:
+1. Tested the code using PEP8 website and there are no problmes.
+2. Tested the code in my local terminal and the Code Institure Heroku terminal.
