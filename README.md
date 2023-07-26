@@ -89,8 +89,10 @@ I have manually tested this project by doing the following:
 No bugs or errors found.
 
 ## Validator Testing
-- PEP8:
-No errors were returned from PEP8online.com
+No errors were returned, i used ExtendClass python formatter and Code Beautify.
+websites:
+https://extendsclass.com/python-formatter.html
+https://codebeautify.org/python-formatter-beautifier 
 
 ## Deployment:
 This project was deployed using Code institute's mock terminal for Heroku.

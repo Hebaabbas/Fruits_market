@@ -21,7 +21,9 @@ store_name = None
 user_age = None
 
 def get_user_info():
-    """ This function gets the age and name of the user """
+    """ 
+    This function gets the age and name of the user 
+    """
     global user_age, store_name
     while user_age is None:
         try:
