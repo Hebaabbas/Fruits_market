@@ -23,18 +23,25 @@ Here is the live version of the project.
 
 The program starts by asking for your age and the name of your fruit market store. It ensures that the user is at least 18 years old to proceed.
 
-![Alt Text](./media/2.png)
-
-The program stops if the user is less than 18
-
 ![Alt Text](./media/3.png)
 
-The program continues to ask the user to pick a name for their market
+The program will inform the user that they must be at least 18 incase they're younger and will ask the user to reinput the age if the user doesnt insert a value of numbers.
+
+![Alt Text](./media/2.png)
+![Alt Text](./media/12.png)
+
+
+Now that the user is at least 18, the program asks the user to pick a name for their market, which has to be using letters only.
+
+![Alt Text](./media/13.png)
 
 ![Alt Text](./media/4.png)
 
 - Data Status:
 The program will ask the user if the business day is over to start inserting the data or not by sending a yes or no:
+
+In case the user inputs a value other than yes or no :
+![Alt Text](./media/14.png)
 
 In case it isnt done:
 ![Alt Text](./media/5.png)
