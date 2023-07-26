@@ -84,3 +84,6 @@ Any data updated will be shown on the Google sheets. In our example we have user
 I have manually tested this project by doing the following:
 1. Tested the code using PEP8 website and there are no problmes.
 2. Tested the code in my local terminal and the Code Institure Heroku terminal.
+
+## Bugs
+No bugs or errors found.
