@@ -100,3 +100,6 @@ This project was deployed using Code institute's mock terminal for Heroku.
 3. Link the Heroku app to the repository
 4. Deploy and View.
 
+## Credits:
+1. Code institute for the deployment terminal
+2. Code institute's sample project that was used as a big help.
