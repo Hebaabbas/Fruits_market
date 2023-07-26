@@ -168,6 +168,13 @@ def get_fruit_names():
     """
     return ["Strawberry", "Apple", "Banana", "Mango", "Avocado", "Orange", "Kiwi", "Lemon"]
 
+def create_stock_dictionary(fruit_names, stock_data):
+    """
+    Create a dictionary of fruit names and their corresponding stock values
+    """
+    stock_dict = dict(zip(fruit_names, stock_data))
+    return stock_dict
+
 def main():
     """
     Run all program functions
@@ -182,9 +189,14 @@ def main():
     sold_columns = get_last_3_entries_sold()
     stock_data= calculate_stock_data(sold_columns)
     update_worksheet(stock_data, "stock")
-
+    
+    # Get the fruit names and create the stock dictionary
     fruit_names = get_fruit_names()
+    stock_dict = create_stock_dictionary(fruit_names, stock_data)
 
+    # Print the stock dictionary to the terminal
+    print("\nStock for tomorrow's business day:")
+    pprint(stock_dict)
 
 main()
 print("Thank you for using our market program for today, welcome back tomorrow!")
