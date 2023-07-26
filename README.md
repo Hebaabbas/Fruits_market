@@ -64,4 +64,18 @@ After the initial setup, the program prompts you to input the number of products
 Thank You: The program will thank you for using it, and you can close the terminal.
 
 
+## Other programs used at the same time
 
+The Fruit Market Sales Data Collector uses the gspread library to interact with Google Sheets.
+
+Any data updated will be shown on the Google sheets. In our example we have user previously we can see that our data will be updated in 3 different sheets in the worksheet :
+
+1. The data we have inserted are saved in the Sold sheet (indicated what was sold by the end of the business day):
+![Alt Text](./media/9.png)
+
+
+2. The extra sheet is for the surplus and deficit calculations which show the values that were extra by the end of the day in the stock and the values that was needed to be brought in as a refill during the business day:
+![Alt Text](./media/10.png)
+
+3. And last but not least, The stock sheet and thats where the program saves and lets the user know the value that has to be in the stock by the begining of the next business day based of calculating sales averages and adding 5% to the values:
+![Alt Text](./media/11.png)
