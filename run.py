@@ -2,6 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 from datetime import datetime
 import json
+import re
 
 
 SCOPE = [
@@ -20,15 +21,28 @@ store_name = None
 user_age = None
 
 def get_user_info():
+    """ This function gets the age and name of the user """
     global user_age, store_name
+    while user_age is None:
+        try:
+            user_age = int(input("Hello! This is a Fruit market store data collector. Please input your age: \n").strip())
+            print(f'age: {user_age}')
+            if user_age < 18:
+                raise ValueError("The user must be at least 18")
+        except ValueError as e:
+            print(f"Invalid input, you need to give an actual number in digits and {e}. Please try again...")
+            user_age = None  # Reset user_age so that the loop continues
 
-    if user_age is None:
-        user_age = int(input("Hello! This is a Fruit market store data collector. Please input your age: \n"))
-        if user_age < 18:
-            raise SystemExit('The user must be at least 18')
+    while True:
+        store_name = input("Please choose a name for the market you'd like to run: \n").strip()
 
-    if store_name is None:
-        store_name = input("Please choose a name for the market you'd like to run: \n")
+        # Check if the store_name contains only letters using regular expression
+        if re.match(r'^[A-Za-z]+$', store_name):
+            break
+        else:
+            print("Invalid store name. Please use only letters (A-Z, a-z).")
+
+    print(f"Store name is set to: {store_name}")
 
 def store_ready():
     """
