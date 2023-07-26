@@ -42,7 +42,6 @@ def store_ready():
             return True
         elif store_condition.lower() == "no":
             print("Please come back when the business day is over.")
-            return False
             raise SystemExit("Business day not over. Program stopped.")
 
         else:
