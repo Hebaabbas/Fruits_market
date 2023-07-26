@@ -195,8 +195,8 @@ def main():
     stock_dict = create_stock_dictionary(fruit_names, stock_data)
 
     # Print the stock dictionary to the terminal
-    print("\nStock for tomorrow's business day:")
-    pprint(stock_dict)
+    print("\nStock for tomorrow's business day to be filled with:")
+    print(stock_dict)
 
 main()
 print("Thank you for using our market program for today, welcome back tomorrow!")
