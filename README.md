@@ -17,3 +17,17 @@ Here is the live version of the project.
 - Stock Calculation: The program will calculate the stock for each fruit type for the next business day, considering the average sales of the last three days and adding 5% to each value. It will display the stock data in a dictionary format.
 
 - Thank You: The program will thank you for using it, and you can close the terminal.
+
+## Features:
+- User-friendly:
+
+The program starts by asking for your age and the name of your fruit market store. It ensures that the user is at least 18 years old to proceed.
+
+![Alt Text](./media/2.png)
+
+The program stops if the user is less than 18
+
+![Alt Text](./media/3.png)
+
+The program continues to ask the user to pick a name for their market
+
